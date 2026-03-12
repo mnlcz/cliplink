@@ -30,7 +30,7 @@ freedesktop desktop notification (Save / Dismiss)
 | D-Bus bindings | ddbus 3.0.0-beta.2 |
 | Clipboard monitoring | GPaste 45.3 via `org.gnome.GPaste2` D-Bus API |
 | Notifications | freedesktop `org.freedesktop.Notifications` |
-| Target platform | RHEL 10 / GNOME 47 / Wayland |
+| Target platform | RHEL 10.1 / GNOME 47 / Wayland |
 
 ## Requirements
 
