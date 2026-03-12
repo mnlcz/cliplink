@@ -74,4 +74,4 @@ cliplink/
 
 ## Output file
 
-URLs are saved to `~/links.txt` by default. You can specify a different path using the `--path` option. The default value can be changed in `app.d`.
+URLs are saved to `~/links.txt` by default. You can specify a different path using the `--path` option or by setting the `CLIPLINK_OUT_FILE` environment variable. The default value is defined in `app.d`.

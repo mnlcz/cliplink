@@ -11,6 +11,7 @@ import std.stdio : writeln, stderr;
 import std.string : strip;
 import std.typecons : Tuple;
 import std.getopt;
+import std.process : environment;
 
 @safe:
 
@@ -25,7 +26,8 @@ private Notifier gNotifier;
 
 void main(string[] args) @trusted
 {
-    string outputFile = "~/links.txt"; // default
+    auto env = environment.get("CLIPLINK_OUT_FILE");
+    string outputFile = env is null ? "~/links.txt" : env; // default
     auto helpInfo = getopt(args, "path|p", "This refers to the output file path.", &outputFile);
     if (helpInfo.helpWanted)
     {
