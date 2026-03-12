@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/cliplink
+cliplink.so
+cliplink.dylib
+cliplink.dll
+cliplink.a
+cliplink.lib
+cliplink-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

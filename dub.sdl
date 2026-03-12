@@ -1,0 +1,6 @@
+name "cliplink"
+description "App that grabs links copied by the user and saves them if accepted."
+authors "MnLCz"
+copyright "Copyright © 2026, MnLCz"
+license "MIT"
+dependency "ddbus" version="==3.0.0-beta.2"

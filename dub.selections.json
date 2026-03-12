@@ -1,0 +1,7 @@
+{
+  "fileVersion": 1,
+  "versions": {
+    "ddbus": "3.0.0-beta.2",
+    "dunit": "1.0.16"
+  }
+}
