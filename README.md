@@ -4,7 +4,7 @@ A lightweight background daemon for Linux that monitors the clipboard and lets y
 
 ## What it does
 
-When you copy a URL, cliplink detects it via GPaste and shows a desktop notification with **Save** and **Dismiss** buttons. If you choose Save, the URL is appended to `~/links.txt`. If you dismiss, nothing happens and cliplink goes back to watching.
+When you copy a URL, cliplink detects it via GPaste and shows a desktop notification with **Save** and **Dismiss** buttons. If you choose Save, the URL is appended to chosen location (`~/links.txt` by default). If you dismiss, nothing happens and cliplink goes back to watching.
 
 ## How it works
 
@@ -17,7 +17,7 @@ cliplink detects URL via regex
         ▼
 freedesktop desktop notification (Save / Dismiss)
         │
-        ├─ Save   → append to ~/links.txt
+        ├─ Save   → append to <output_file_path>
         └─ Dismiss → skip
 ```
 
@@ -48,14 +48,14 @@ dub build
 ## Running
 
 ```bash
-./cliplink
+./cliplink --path=<output_file_path>
 ```
 
 Make sure the GPaste daemon is running before starting cliplink:
 
 ```bash
 gpaste-client start
-./cliplink
+./cliplink --path=<output_file_path>
 ```
 
 ## Project structure
@@ -63,6 +63,8 @@ gpaste-client start
 ```
 cliplink/
 ├── dub.sdl
+├── resources/
+│   └── cliplink.png     # Icon
 └── source/
     ├── app.d            # Entry point, D-Bus main loop, GPaste watcher
     ├── urlfilter.d      # Regex-based URL detection
@@ -72,4 +74,4 @@ cliplink/
 
 ## Output file
 
-URLs are saved to `~/links.txt`, one per line. The path is defined as a constant in `linkappender.d` and is straightforward to make configurable.
+URLs are saved to `~/links.txt` by default. You can specify a different path using the `--path` option. The default value can be changed in `app.d`.

@@ -5,13 +5,11 @@ import std.path : expandTilde;
 
 @safe:
 
-immutable string outputFile = "~/links.txt";
-
-bool appendLink(string link)
+bool appendLink(string link, string outputFile)
 {
     try
     {
-        openAndAppend(link);
+        openAndAppend(link, outputFile);
         return true;
     }
     catch (Exception e)
@@ -20,7 +18,7 @@ bool appendLink(string link)
     }
 }
 
-private void openAndAppend(string url) @trusted
+private void openAndAppend(string url, string outputFile) @trusted
 {
     auto f = File(expandTilde(outputFile), "a");
     scope (exit)

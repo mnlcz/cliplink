@@ -10,6 +10,7 @@ import urlfilter : extractUrl;
 import std.stdio : writeln, stderr;
 import std.string : strip;
 import std.typecons : Tuple;
+import std.getopt;
 
 @safe:
 
@@ -24,13 +25,20 @@ private Notifier gNotifier;
 
 void main(string[] args) @trusted
 {
+    string outputFile = "~/links.txt"; // default
+    auto helpInfo = getopt(args, "path|p", "This refers to the output file path.", &outputFile);
+    if (helpInfo.helpWanted)
+    {
+        defaultGetoptPrinter("Information about the program.", helpInfo.options);
+    }
+
     gBusConn = connectToBus();
 
     gNotifier = new Notifier(&gBusConn,
         (string url, bool accepted) @trusted {
         if (accepted)
         {
-            if (!appendLink(url))
+            if (!appendLink(url, outputFile))
                 stderr.writeln("[cliplink] Failed to write: ", url);
             else
                 writeln("[cliplink] Saved: ", url);
